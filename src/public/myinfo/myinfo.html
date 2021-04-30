@@ -1,0 +1,39 @@
+<div class="container">
+  <div ng-if="myinfoCtrl.hasUserData">
+    <h2>My info</h2>
+    <div>
+      <div>
+        <h5>Firstname: {{myinfoCtrl.userData.firstname}}</h5>
+        <h5>Lastname: {{myinfoCtrl.userData.lastname}}</h5>
+        <h5>E-mail: {{myinfoCtrl.userData.email}}</h5>
+        <h5>Phone number: {{myinfoCtrl.userData.phone}}</h5>
+      </div>
+    </div>
+    <hr />
+    <div ng-if="myinfoCtrl.hasFavMenu">
+      <div style="margin-bottom: 5%">
+        <h1>My favorited menu</h1>
+      </div>
+      <menu-item
+        ng-repeat="favMenuItem in myinfoCtrl.favMenuItems"
+        menu-item="favMenuItem"
+      >
+      </menu-item>
+    </div>
+  </div>
+
+  <div ng-if="!myinfoCtrl.hasUserData">
+    <h1>
+      Not Signed Up Yet.
+      <a
+        style="color: rgb(255, 196, 0); font-weight: bold"
+        ui-sref="public.signup"
+        >Sign up Now!</a
+      >
+    </h1>
+  </div>
+
+  <!-- <menu-item ng-repeat="menuItem in menuItemsCtrl.menuItems.menu_items"
+             menu-item="menuItem">
+  </menu-item> -->
+</div>

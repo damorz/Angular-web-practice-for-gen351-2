@@ -1,0 +1,133 @@
+<div class="container">
+  <h2 id="menu-categories-title">Sign Up</h2>
+  <div>Enter your personal data and fill your favorite food.</div>
+  <div class="col-sm-6">
+    <form name="signupForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">First name</label>
+        <input
+          name="firstname"
+          ng-model="signupCtrl.firstname"
+          required
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter firstname"
+        />
+        <small
+          ng-if="signupForm.firstname.$error.required && signupForm.firstname.$touched"
+          id="emailHelp"
+          class="form-text text-muted"
+          style="color: white"
+          >Firstname is required.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last name</label>
+        <input
+          name="lastname"
+          ng-model="signupCtrl.lastname"
+          required
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter lastname"
+        />
+        <small
+          ng-if="signupForm.lastname.$error.required && signupForm.lastname.$touched"
+          id="emailHelp"
+          class="form-text text-muted"
+          style="color: white"
+          >Lastname is required.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Email address</label>
+        <input
+          name="email"
+          ng-model="signupCtrl.email"
+          required
+          type="email"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Enter email"
+        />
+        <small
+          ng-if="signupForm.email.$invalid && signupForm.email.$touched"
+          id="emailHelp"
+          class="form-text text-muted"
+          style="color: white"
+          >Must be a valid email address ex. example@domain</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Phone number</label>
+        <input
+          name="phone"
+          ng-model="signupCtrl.phone"
+          required
+          pattern="(\d{3})-(\d{3})-(\d{4})"
+          type="text"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="XXX-XXX-XXXX"
+        />
+        <small
+          ng-if="signupForm.phone.$invalid && signupForm.phone.$touched"
+          id="emailHelp"
+          class="form-text text-muted"
+          style="color: white"
+          >Phone must be in the format XXX-XXX-XXXX</small
+        >
+      </div>
+      <div class="form-check">
+        <label class="form-text" for="exampleCheck1"
+          >Add favorite menu (short name)</label
+        >
+        <div class="row">
+          <div class="col-sm-8">
+            <input
+              ng-model="signupCtrl.currentFavItem"
+              name="favItem"
+              type="text"
+              class="form-control"
+              id="exampleCheck1"
+            />
+          </div>
+          <div class="col-sm-4">
+            <button
+              ng-click="signupCtrl.addFavMenu()"
+              style="color: rgb(146, 43, 43); font-weight: bold"
+              type="submit"
+              class="btn btn-light"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <small
+          ng-if="signupCtrl.addFavError"
+          class="form-text"
+          style="color: white"
+          >{{signupCtrl.addFavError}}</small
+        >
+      </div>
+      <div ng-if="signupCtrl.hasFav">
+        Favorited: {{signupCtrl.favoriteMenu}}
+      </div>
+      <button
+        ng-click="signupCtrl.submitForm()"
+        ng-disabled="signupForm.$invalid"
+        style="margin-top: 6%; color: rgb(146, 43, 43); font-weight: bold"
+        type="submit"
+        class="btn btn-light"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
